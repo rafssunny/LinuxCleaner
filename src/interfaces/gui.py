@@ -14,14 +14,14 @@ dark_green = '#006400'
 green = '#009900'
 
 # variables checkbox
-tmp = StringVar(value='on')
-vartmp = StringVar(value='on')
+journalctl = StringVar(value='on')
+varcrash = StringVar(value='on')
 cache = StringVar(value='on')
-varlog = StringVar(value='on')
-apt = StringVar(value='on')
-pacman = StringVar(value='on')
-dnf = StringVar(value='on')
-zypp = StringVar(value='on')
+fccache = StringVar(value='on')
+apt = StringVar(value='off')
+pacman = StringVar(value='off')
+dnf = StringVar(value='off')
+zypp = StringVar(value='off')
 
 # labels configs
 tux_img = CTkImage(dark_image=Image.open('./assets/imgs/tux.png'), size=(100,100))
@@ -43,38 +43,34 @@ system_cache_label = CTkLabel(system_labels_frame, text='System Cache', font=('A
 system_cache_label.pack(pady=5)
 
 
-system_tmp = CTkCheckBox(system_labels_frame, text='/tmp/*', variable = tmp, onvalue='on', offvalue='off', fg_color=dark_green,hover_color=green)
-system_tmp.pack(pady=5)
+system_journalctl = CTkCheckBox(system_labels_frame, text='journalctl --vacuum-time=7d', variable = journalctl, onvalue='on', offvalue='off', fg_color=dark_green,hover_color=green)
+system_journalctl.pack(pady=5)
 
-system_var_tmp = CTkCheckBox(system_labels_frame, text='/var/tmp/*', variable = vartmp, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
-system_var_tmp.pack(pady=5)
+system_varcrash = CTkCheckBox(system_labels_frame, text='/var/crash/*', variable = varcrash, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+system_varcrash.pack(pady=5)
 
 system_cache = CTkCheckBox(system_labels_frame, text='~/.cache/*', variable = cache, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 system_cache.pack(pady=5)
 
-system_logs = CTkCheckBox(system_labels_frame, text='/var/log', variable = varlog, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
-system_logs.pack(pady=5)
+system_fccache = CTkCheckBox(system_labels_frame, text='fc-cache -r', variable = fccache, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+system_fccache.pack(pady=5)
 
 # menu packages config GUI
 packages_manager_cache_label = CTkLabel(packages_labels_frame, text='Packages Cache', font=('Aria', 20))
 packages_manager_cache_label.pack(pady=5)
 
 
-packages_apt = CTkCheckBox(packages_labels_frame, text='/var/cache/apt/archives', variable = apt, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+packages_apt = CTkCheckBox(packages_labels_frame, text='apt', variable = apt, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 packages_apt.pack(pady=5)
 
-packages_pacman = CTkCheckBox(packages_labels_frame, text='/var/cache/pacman/pkg', variable = pacman, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+packages_pacman = CTkCheckBox(packages_labels_frame, text='pacman', variable = pacman, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 packages_pacman.pack(pady=5)
 
-packages_dnf = CTkCheckBox(packages_labels_frame, text='/var/cache/dnf', variable = dnf, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+packages_dnf = CTkCheckBox(packages_labels_frame, text='dnf', variable = dnf, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 packages_dnf.pack(pady=5)
 
-packages_zypper = CTkCheckBox(packages_labels_frame, text='/var/cache/zypp', variable =zypp, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+packages_zypper = CTkCheckBox(packages_labels_frame, text='zypp', variable =zypp, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 packages_zypper.pack(pady=5)
-
-# warning label
-warning_label = CTkLabel(root, text='Please close everything before starting the cleaning!', font=('Arial', 15, 'italic'))
-warning_label.pack()
 
 #buttons
 execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green)
