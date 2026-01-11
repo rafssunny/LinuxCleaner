@@ -15,14 +15,14 @@ def detectTerminal():
             pass
 
 def clearSystemCache():
-        execute_cleaning = subprocess.Popen([
-            detectTerminal(),
-            "--",
-            "bash", "-c",
-            """
-            sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r
-            """
-        ])
+    execute_cleaning = subprocess.Popen([
+        detectTerminal(),
+        "--",
+        "bash", "-c",
+        """
+        sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; echo; read -p Cleaning completed;
+        """
+    ])
 
 def clearSelected():
     pass

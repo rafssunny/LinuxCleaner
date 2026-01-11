@@ -1,8 +1,8 @@
 from customtkinter import * 
 from PIL import Image
+from src.core.gui_functions import *
 
 set_appearance_mode("dark")
-
 # config root
 root = CTk()
 root.title('LinuxCleaner')
@@ -73,7 +73,7 @@ packages_zypper = CTkCheckBox(packages_labels_frame, text='zypp', variable =zypp
 packages_zypper.pack(pady=5)
 
 #buttons
-execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green)
+execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: chooseSystemCleaningType(journalctl.get(), varcrash.get(), cache.get(), fccache.get()))
 execute_button.pack(pady=5)
 
 root.mainloop()
