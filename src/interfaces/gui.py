@@ -2,6 +2,7 @@ from customtkinter import *
 from PIL import Image
 from src.core.gui_functions import *
 
+
 set_appearance_mode("dark")
 # config root
 root = CTk()
@@ -14,14 +15,14 @@ dark_green = '#006400'
 green = '#009900'
 
 # variables checkbox
-journalctl = StringVar(value='on')
-varcrash = StringVar(value='on')
-cache = StringVar(value='on')
-fccache = StringVar(value='on')
-apt = StringVar(value='off')
-pacman = StringVar(value='off')
-dnf = StringVar(value='off')
-zypp = StringVar(value='off')
+journalctl = StringVar(value='on') 
+varcrash = StringVar(value='on') 
+cache = StringVar(value='on') 
+fccache = StringVar(value='on') 
+apt = StringVar(value='on') 
+pacman = StringVar(value='on') 
+dnf = StringVar(value='on') 
+zypp = StringVar(value='on') 
 
 # labels configs
 tux_img = CTkImage(dark_image=Image.open('./assets/imgs/tux.png'), size=(100,100))

@@ -14,8 +14,15 @@ def detectTerminal():
         except:
             pass
 
-def clearSystemCache():
-    execute_cleaning = subprocess.Popen([
+def getSelectedSystemCache(values_dict):
+    on_variables = []
+    for name, var in values_dict:
+        if var.get() == 'on':
+            on_variables.append(name)
+    return on_variables
+
+def clearAllSystemCache():
+    subprocess.Popen([
         detectTerminal(),
         "--",
         "bash", "-c",
@@ -24,5 +31,12 @@ def clearSystemCache():
         """
     ])
 
-def clearSelected():
-    pass
+def clearSelectedSystemCache():
+    selected_variables = getSelectedSystemCache(
+        {
+            'journalctl':journalctl,
+            'varcrash':varcrash,
+            'cache':cache,
+            'fccache':fccache
+        }
+    )
