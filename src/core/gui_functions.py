@@ -1,10 +1,11 @@
 from src.core.cleaner import *
 
-def chooseSystemCleaningType(value1, value2, value3, value4):
-    if value1.get() == 'on' and value2.get() == 'on' and value3.get() == 'on' and value4.get() == 'on':
+def chooseSystemCleaningType(journalctl, varcrash, cache, fccache):
+    if journalctl.get() == 'on' and varcrash.get() == 'on' and cache.get() == 'on' and fccache.get() == 'on':
             clearAllSystemCache()
     else:
-        clearSelectedSystemCache()
+        clearSelectedSystemCache(journalctl, varcrash,cache, fccache)
         
 def choosePackagesCleaningType():
     pass
+

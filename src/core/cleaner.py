@@ -14,29 +14,36 @@ def detectTerminal():
         except:
             pass
 
+def clearAllSystemCache():
+    subprocess.Popen([
+        detectTerminal(),
+        '--',
+        'bash', '-c',
+        """
+        sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; echo; read -p "Cleaning completed";
+        """
+    ])
+
 def getSelectedSystemCache(values_dict):
     on_variables = []
-    for name, var in values_dict:
+    for name, var in values_dict.items():
         if var.get() == 'on':
             on_variables.append(name)
     return on_variables
 
-def clearAllSystemCache():
-    subprocess.Popen([
-        detectTerminal(),
-        "--",
-        "bash", "-c",
-        """
-        sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; echo; read -p Cleaning completed;
-        """
-    ])
-
-def clearSelectedSystemCache():
+def clearSelectedSystemCache(journalctl, varcrash, cache, fccache):
     selected_variables = getSelectedSystemCache(
         {
-            'journalctl':journalctl,
-            'varcrash':varcrash,
-            'cache':cache,
-            'fccache':fccache
+            'sudo journalctl --vacuum-time=7d':journalctl,
+            'sudo rm -rf /var/crash/*':varcrash,
+            'sudo rm -rf ~/.cache/*':cache,
+            'fc-cache -r':fccache
         }
     )
+    expression = '; '.join(value for value in selected_variables) + '; echo; read -p "Cleaning completed";'
+    subprocess.Popen([
+        detectTerminal(),
+        '--',
+        'bash', '-c',
+        expression
+    ])
