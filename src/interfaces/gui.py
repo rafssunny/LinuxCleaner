@@ -74,7 +74,7 @@ packages_zypper = CTkCheckBox(packages_labels_frame, text='zypp', variable =zypp
 packages_zypper.pack(pady=5)
 
 #buttons
-execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: chooseSystemCleaningType(journalctl, varcrash, cache, fccache))
+execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, apt, pacman, dnf, zypper))
 execute_button.pack(pady=5)
 
 root.mainloop()

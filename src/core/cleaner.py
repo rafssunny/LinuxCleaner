@@ -14,6 +14,7 @@ def detectTerminal():
         except:
             pass
 
+# system 
 def clearAllSystemCache():
     subprocess.Popen([
         detectTerminal(),
@@ -47,3 +48,17 @@ def clearSelectedSystemCache(journalctl, varcrash, cache, fccache):
         'bash', '-c',
         expression
     ])
+
+# packages 
+def clearAllPackagesCache():
+    subprocess.Popen()([
+        detectTerminal(),
+        '--',
+        'bash', '-c',
+        """
+        sudo apt clean; sudo pacman -Sc; sudo dnf clean all; sudo zypper clean
+        """
+    ])
+
+def clearSelectedPackagesCache():
+    pass
