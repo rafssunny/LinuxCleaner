@@ -1,17 +1,20 @@
 from src.core.cleaner import *
 
+#system
 def chooseSystemCleaningType(journalctl, varcrash, cache, fccache):
-    if journalctl.get() == 'on' and varcrash.get() == 'on' and cache.get() == 'on' and fccache.get() == 'on':
+    if all(system.get() == 'on' for system in (journalctl, varcrash, cache, fccache)):
             clearAllSystemCache()
     else:
         clearSelectedSystemCache(journalctl, varcrash, cache, fccache)
-        
+
+# packages 
 def choosePackagesCleaningType(apt, pacman, dnf, zypper):
-    if apt.get() == 'on' and pacman.get() == 'on' and dnf.get() == 'on' and zypper.get() == 'on':
+    if all(pkg.get() == 'on' for pkg in (apt, pacman, dnf, zypper)):
         clearAllPackagesCache()
     else:
-        pass
-
+        clearSelectedPackagesCache(apt, pacman, dnf, zypper)
+        
+# both 
 def selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, apt, pacman, dnf, zypper):
         chooseSystemCleaningType(journalctl, varcrash, cache, fccache)
         choosePackagesCleaningType(apt, pacman, dnf, zypper)

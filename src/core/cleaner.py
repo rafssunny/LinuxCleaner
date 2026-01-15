@@ -1,5 +1,6 @@
 import subprocess
 
+# find the first terminal available
 def detectTerminal():
     terminals = ['gnome-terminal', 'konsole', 'kitty', 'alacritty']
     for t in terminals:
@@ -14,6 +15,23 @@ def detectTerminal():
         except:
             pass
 
+# select values to clear
+def getSelectedValues(values_dict):
+    on_variables = []
+    for name, var in values_dict.items():
+        if var.get() == 'on':
+            on_variables.append(name)
+    return on_variables
+
+def clearSelectedValues(selected_variables):
+    expression = '; '.join(value for value in selected_variables) + '; echo; read -p "Cleaning completed";'
+    subprocess.Popen([
+        detectTerminal(),
+        '--',
+        'bash', '-c',
+        expression
+    ])
+
 # system 
 def clearAllSystemCache():
     subprocess.Popen([
@@ -25,15 +43,8 @@ def clearAllSystemCache():
         """
     ])
 
-def getSelectedSystemCache(values_dict):
-    on_variables = []
-    for name, var in values_dict.items():
-        if var.get() == 'on':
-            on_variables.append(name)
-    return on_variables
-
 def clearSelectedSystemCache(journalctl, varcrash, cache, fccache):
-    selected_variables = getSelectedSystemCache(
+    selected_variables = getSelectedValues(
         {
             'sudo journalctl --vacuum-time=7d':journalctl,
             'sudo rm -rf /var/crash/*':varcrash,
@@ -41,13 +52,7 @@ def clearSelectedSystemCache(journalctl, varcrash, cache, fccache):
             'fc-cache -r':fccache
         }
     )
-    expression = '; '.join(value for value in selected_variables) + '; echo; read -p "Cleaning completed";'
-    subprocess.Popen([
-        detectTerminal(),
-        '--',
-        'bash', '-c',
-        expression
-    ])
+    clearSelectedValues(selected_variables)
 
 # packages 
 def clearAllPackagesCache():
@@ -60,5 +65,13 @@ def clearAllPackagesCache():
         """
     ])
 
-def clearSelectedPackagesCache():
-    pass
+def clearSelectedPackagesCache(apt, pacman, dnf, zypper):
+    selected_variables = getSelectedValues(
+        {
+            'sudo apt clean':apt,
+            'sudo pacman -Sc':pacman,
+            'sudo dnf clean all':dnf,
+            'sudo zypper clean':zypper
+        }
+    )
+    clearSelectedValues(selected_variables)
