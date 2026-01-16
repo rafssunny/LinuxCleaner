@@ -56,12 +56,12 @@ def clearSelectedSystemCache(journalctl, varcrash, cache, fccache):
 
 # packages 
 def clearAllPackagesCache():
-    subprocess.Popen()([
+    subprocess.Popen([
         detectTerminal(),
         '--',
         'bash', '-c',
         """
-        sudo apt clean; sudo pacman -Sc; sudo dnf clean all; sudo zypper clean
+        sudo apt clean; sudo pacman -Sc; sudo dnf clean all; sudo zypper clean; echo; read -p "Cleaning completed";
         """
     ])
 

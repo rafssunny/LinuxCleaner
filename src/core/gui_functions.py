@@ -16,5 +16,5 @@ def choosePackagesCleaningType(apt, pacman, dnf, zypper):
         
 # both 
 def selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, apt, pacman, dnf, zypper):
-        chooseSystemCleaningType(journalctl, varcrash, cache, fccache)
-        choosePackagesCleaningType(apt, pacman, dnf, zypper)
+    chooseSystemCleaningType(journalctl, varcrash, cache, fccache)
+    choosePackagesCleaningType(apt, pacman, dnf, zypper)

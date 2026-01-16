@@ -1,6 +1,6 @@
 from customtkinter import * 
 from PIL import Image
-from src.core.gui_functions import *
+from src.core.gui_functions import selectGeneralCleaningOrganization
 
 
 set_appearance_mode("dark")
@@ -19,10 +19,10 @@ journalctl = StringVar(value='on')
 varcrash = StringVar(value='on') 
 cache = StringVar(value='on') 
 fccache = StringVar(value='on') 
-apt = StringVar(value='on') 
-pacman = StringVar(value='on') 
-dnf = StringVar(value='on') 
-zypp = StringVar(value='on') 
+apt = StringVar(value='off') 
+pacman = StringVar(value='off') 
+dnf = StringVar(value='off') 
+zypper = StringVar(value='off') 
 
 # labels configs
 tux_img = CTkImage(dark_image=Image.open('./assets/imgs/tux.png'), size=(100,100))
@@ -70,7 +70,7 @@ packages_pacman.pack(pady=5)
 packages_dnf = CTkCheckBox(packages_labels_frame, text='dnf', variable = dnf, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 packages_dnf.pack(pady=5)
 
-packages_zypper = CTkCheckBox(packages_labels_frame, text='zypp', variable =zypp, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+packages_zypper = CTkCheckBox(packages_labels_frame, text='zypper', variable =zypper, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
 packages_zypper.pack(pady=5)
 
 #buttons
