@@ -11,7 +11,7 @@ while user_input != 'exit':
         clearAllSystemCache()
         clearAllPackagesCache() 
     elif user_input == 'cl sy':
-        clearSelectedSystemCache()
+        clearAllSystemCache()
     elif user_input == 'cl pk':
         clearAllPackagesCache()
     elif user_input == 'exit':
