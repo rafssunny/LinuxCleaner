@@ -19,10 +19,12 @@ def start_gui():
     varcrash = StringVar(value='on') 
     cache = StringVar(value='on') 
     fccache = StringVar(value='on') 
+    trash = StringVar(value='on')
     apt = StringVar(value='off') 
     pacman = StringVar(value='off') 
     dnf = StringVar(value='off') 
     zypper = StringVar(value='off') 
+    flatpak = StringVar(value='off')
 
     # labels configs
     tux_img = CTkImage(dark_image=Image.open('./assets/imgs/tux.png'), size=(100,100))
@@ -56,6 +58,9 @@ def start_gui():
     system_fccache = CTkCheckBox(system_labels_frame, text='fc-cache -r', variable = fccache, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
     system_fccache.pack(pady=5)
 
+    system_trash = CTkCheckBox(system_labels_frame, text='/share/Trash/', variable = trash, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+    system_trash.pack(pady=5)
+
     # menu packages config GUI
     packages_manager_cache_label = CTkLabel(packages_labels_frame, text='Packages Cache', font=('Aria', 20))
     packages_manager_cache_label.pack(pady=5)
@@ -73,8 +78,11 @@ def start_gui():
     packages_zypper = CTkCheckBox(packages_labels_frame, text='zypper', variable =zypper, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
     packages_zypper.pack(pady=5)
 
+    packages_flatpak = CTkCheckBox(packages_labels_frame, text='flatpak', variable=flatpak, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
+    packages_flatpak.pack(pady=5)
+
     #buttons
-    execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, apt, pacman, dnf, zypper))
+    execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, trash, apt, pacman, dnf, zypper, flatpak))
     execute_button.pack(pady=5)
 
     root.mainloop()

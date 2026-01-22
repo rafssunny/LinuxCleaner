@@ -2,7 +2,7 @@ import subprocess
 
 # find the first terminal available
 def detectTerminal():
-    terminals = ['gnome-terminal', 'konsole', 'kitty', 'alacritty']
+    terminals = ['gnome-terminal', 'konsole', 'kitty', 'alacritty', 'wezterm', 'ghostty', 'foot', 'tilix', 'terminator', 'guake', 'yakuake']
     for t in terminals:
         try:
             resultado = subprocess.run(
@@ -39,17 +39,18 @@ def clearAllSystemCache():
         '--',
         'bash', '-c',
         """
-        sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; echo; read -p "Cleaning completed";
+        sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; rm -rf ~/.local/share/Trash/*; echo; read -p "Cleaning completed";
         """
     ])
 
-def clearSelectedSystemCache(journalctl, varcrash, cache, fccache):
+def clearSelectedSystemCache(journalctl, varcrash, cache, fccache, trash):
     selected_variables = getSelectedValues(
         {
             'sudo journalctl --vacuum-time=7d':journalctl,
             'sudo rm -rf /var/crash/*':varcrash,
             'sudo rm -rf ~/.cache/*':cache,
-            'fc-cache -r':fccache
+            'fc-cache -r':fccache,
+            'sudo rm -rf ~/.local/share/Trash/*':trash
         }
     )
     clearSelectedValues(selected_variables)
@@ -65,13 +66,14 @@ def clearAllPackagesCache():
         """
     ])
 
-def clearSelectedPackagesCache(apt, pacman, dnf, zypper):
+def clearSelectedPackagesCache(apt, pacman, dnf, zypper, flatpak):
     selected_variables = getSelectedValues(
         {
             'sudo apt clean':apt,
             'sudo pacman -Sc':pacman,
             'sudo dnf clean all':dnf,
-            'sudo zypper clean':zypper
+            'sudo zypper clean':zypper,
+            'flatpak uninstall --unused':flatpak
         }
     )
     clearSelectedValues(selected_variables)
