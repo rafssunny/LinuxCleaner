@@ -39,7 +39,7 @@ def clearAllSystemCache():
         '--',
         'bash', '-c',
         """
-        sudo journalctl --vacuum-time=7d; sudo rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; rm -rf ~/.local/share/Trash/*; echo; read -p "Cleaning completed";
+        sudo journalctl --vacuum-time=7d; rm -rf ~/.cache/*; sudo rm -rf /var/crash/*; fc-cache -r; rm -rf ~/.local/share/Trash/*; echo; read -p "Cleaning completed";
         """
     ])
 
@@ -48,9 +48,9 @@ def clearSelectedSystemCache(journalctl, varcrash, cache, fccache, trash):
         {
             'sudo journalctl --vacuum-time=7d':journalctl,
             'sudo rm -rf /var/crash/*':varcrash,
-            'sudo rm -rf ~/.cache/*':cache,
+            'rm -rf ~/.cache/*':cache,
             'fc-cache -r':fccache,
-            'sudo rm -rf ~/.local/share/Trash/*':trash
+            'rm -rf ~/.local/share/Trash/*':trash
         }
     )
     clearSelectedValues(selected_variables)
@@ -62,7 +62,7 @@ def clearAllPackagesCache():
         '--',
         'bash', '-c',
         """
-        sudo apt clean; sudo pacman -Sc; sudo dnf clean all; sudo zypper clean; echo; read -p "Cleaning completed";
+        sudo apt clean; sudo pacman -Sc; sudo dnf clean all; sudo zypper clean; flatpak uninstall --unused; echo; read -p "Cleaning completed";
         """
     ])
 

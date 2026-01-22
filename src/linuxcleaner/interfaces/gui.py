@@ -81,6 +81,10 @@ def start_gui():
     packages_flatpak = CTkCheckBox(packages_labels_frame, text='flatpak', variable=flatpak, onvalue='on', offvalue='off', fg_color=dark_green, hover_color=green)
     packages_flatpak.pack(pady=5)
 
+    # warning label
+    warning_label = CTkLabel(root, text='Please close everything before starting the cleaning!', font=('Arial', 15, 'italic'))
+    warning_label.pack(pady=5)
+    
     #buttons
     execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, trash, apt, pacman, dnf, zypper, flatpak))
     execute_button.pack(pady=5)
