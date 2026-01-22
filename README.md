@@ -12,7 +12,7 @@ The program was developed entirely in **Python**. It uses the **subprocess** lib
 Clone the repository and install the package using pip:
 
 ```bash
-git clone https://github.com/SEU-USUARIO/LinuxCleaner.git
+git clone https://github.com/rafssunny/LinuxCleaner.git
 cd LinuxCleaner
 pip install .
 ```
