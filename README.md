@@ -8,6 +8,25 @@ The program provides both a **GUI** and a **CLI**, allowing the user to choose w
 ## Stack
 The program was developed entirely in **Python**. It uses the **subprocess** library to run system-level processes and the **customtkinter** and **Pillow** libraries for the GUI.
 
+## How to install
+Clone the repository and install the package using pip:
+
+```bash
+git clone https://github.com/SEU-USUARIO/LinuxCleaner.git
+cd LinuxCleaner
+pip install .
+```
+After installation, the linux-cleaner command will be available system-wide.
+
+## How to use
+- CLI MODE
+  ``linux-cleaner cli``
+- GUI MODE
+  ``linux-cleaner gui``
 ---
 
 * *The program is open source, so feel free to contribute to the code :)*
+
+---
+## References
+- ["OS Linux Icon"](https://www.iconarchive.com/show/simply-styled-icons-by-dakirby309/OS-Linux-icon.html) by dAKirby309 
