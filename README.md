@@ -14,7 +14,7 @@ Clone the repository and install the package using pip:
 ```bash
 git clone https://github.com/rafssunny/LinuxCleaner.git
 cd LinuxCleaner
-python -m venv venv
+python3 -m venv venv #or python -m venv venv
 source venv/bin/activate
 pip install .
 ```
