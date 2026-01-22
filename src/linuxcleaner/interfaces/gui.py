@@ -33,7 +33,7 @@ def start_gui():
 
     #frames configs 
     main_frame = CTkFrame(root, fg_color='transparent')
-    main_frame.pack(pady=15, padx=20, fill='both', expand=True)
+    main_frame.pack(pady=10, padx=20, fill='both', expand=True)
 
     system_labels_frame = CTkFrame(main_frame, width=100, height=100)
     system_labels_frame.pack(side='left', padx=(0,10), fill='both', expand =True)
@@ -83,7 +83,7 @@ def start_gui():
 
     # warning label
     warning_label = CTkLabel(root, text='Please close everything before starting the cleaning!', font=('Arial', 15, 'italic'))
-    warning_label.pack(pady=5)
+    warning_label.pack()
     
     #buttons
     execute_button = CTkButton(root, text='Clean', font=('Arial', 25, 'bold'), compound='right', fg_color = dark_green, hover_color=green, command=lambda: selectGeneralCleaningOrganization(journalctl, varcrash, cache, fccache, trash, apt, pacman, dnf, zypper, flatpak))
