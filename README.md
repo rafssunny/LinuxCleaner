@@ -23,8 +23,16 @@ After installation, the linux-cleaner command will be available system-wide.
 ## How to use
 - CLI MODE
   ``linux-cleaner cli``
+<img width="368" height="158" alt="print_2026-01-22_18-08-35" src="https://github.com/user-attachments/assets/57ae6de4-92a3-4091-8f16-7b6b0d9db6d3" />
+
+
+  
 - GUI MODE
   ``linux-cleaner gui``
+
+
+ <img width="400" height="210" alt="print_2026-01-22_18-06-03" src="https://github.com/user-attachments/assets/2cb54b5c-9a97-4fdd-954b-d3944253bd34" />
+
 ---
 
 * *The program is open source, so feel free to contribute to the code :)*
