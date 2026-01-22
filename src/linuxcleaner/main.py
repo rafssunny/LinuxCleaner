@@ -19,3 +19,6 @@ def main():
     else:
         print(f"Unknown mode: {mode}")
         print("Use 'cli' or 'gui'")
+
+if __name__ == "__main__":
+    main()

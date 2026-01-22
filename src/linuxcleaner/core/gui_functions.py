@@ -1,4 +1,4 @@
-from src.core.cleaner import *
+from linuxcleaner.core.cleaner import *
 
 #system
 def chooseSystemCleaningType(journalctl, varcrash, cache, fccache):

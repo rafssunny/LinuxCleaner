@@ -17,3 +17,9 @@ dependencies = [
 
 [project.scripts]
 linux-cleaner = "linuxcleaner.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

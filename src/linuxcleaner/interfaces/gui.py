@@ -1,8 +1,6 @@
 from customtkinter import * 
 from PIL import Image
-from pathlib import Path
 from linuxcleaner.core.gui_functions import selectGeneralCleaningOrganization
-
 
 def start_gui():
     set_appearance_mode("dark")
@@ -27,9 +25,7 @@ def start_gui():
     zypper = StringVar(value='off') 
 
     # labels configs
-    BASE_DIR = Path(__file__).resolve().parent.parent.parent
-    ASSETS_DIR = BASE_DIR / "assets" / "imgs"
-    tux_img = CTkImage(dark_image=Image.open(ASSETS_DIR / "tux.png"), size=(100,100))
+    tux_img = CTkImage(dark_image=Image.open('./assets/imgs/tux.png'), size=(100,100))
     title_label = CTkLabel(root, text='LinuxCleaner', font=('Arial', 50, 'bold', 'italic'), image=tux_img, compound='right')
     title_label.pack()
 
